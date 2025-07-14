@@ -1,0 +1,19 @@
+# Prisma setup instructions (run these in your terminal):
+
+# 1. Install Prisma CLI and client
+pnpm add -D prisma
+pnpm add @prisma/client
+
+# 2. Initialize Prisma (already created schema.prisma)
+# npx prisma init  # (already done manually)
+
+# 3. Set your PostgreSQL credentials in .env (edit USER, PASSWORD, DB)
+
+# 4. Push schema to your database
+npx prisma db push
+
+# 5. (Optional) Generate Prisma client
+npx prisma generate
+
+# 6. (Optional) Open Prisma Studio
+npx prisma studio

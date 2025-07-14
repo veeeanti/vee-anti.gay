@@ -1,0 +1,45 @@
+// Prisma schema for vee-anti.xyz
+// PostgreSQL database
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String
+  created_at  DateTime @default(now())
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  description String
+  category    String
+  tags        String[]
+  download_url String?
+  github_url   String?
+  demo_url     String?
+  status      String   @default("active")
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
+
+model BlogPost {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  content     String
+  tags        String[]
+  published   Boolean  @default(false)
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+}
