@@ -89,17 +89,17 @@ async function uploadFile(file, folderId = null) {
 }
 
 // Usage example
-const fileInput = document.querySelector('input[type="file"]');
-fileInput.addEventListener('change', async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  try {
-    const result = await uploadFile(file);
-    console.log('Uploaded:', result);
-    alert(`Success! Share: https://rootz.so/d/${result.shortId}`);
-  } catch (error) {
-    console.error('Error:', error);
-    alert('Upload failed: ' + error.message);
-  }
-});
+//const fileInput = document.querySelector('input[type="file"]');
+//fileInput.addEventListener('change', async (e) => {
+//  const file = e.target.files[0];
+//  if (!file) return;
+//
+//  try {
+//    const result = await uploadFile(file);
+//    console.log('Uploaded:', result);
+//    alert(`Success! Share: https://rootz.so/d/${result.shortId}`);
+//  } catch (error) {
+//    console.error('Error:', error);
+//    alert('Upload failed: ' + error.message);
+//  }
+//});
