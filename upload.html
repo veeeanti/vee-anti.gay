@@ -2,18 +2,43 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Upload File</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Upload a File</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 400px; margin: 40px auto; padding: 20px; }
+    #uploadStatus { margin-top: 15px; }
+  </style>
 </head>
 <body>
-  <h1>Upload a File</h1>
+  <h2>Upload a File to Rootz.so</h2>
   <form id="uploadForm">
-    <input type="file" id="fileInput" name="file" required />
+    <input type="file" id="fileInput" required />
     <button type="submit">Upload</button>
   </form>
   <div id="uploadStatus"></div>
 
-  <!-- Load the upload script -->
   <script src="upload.js"></script>
+  <script>
+    // Connect your upload.js logic to form and feedback elements:
+    const fileInput = document.getElementById('fileInput');
+    const uploadForm = document.getElementById('uploadForm');
+    const statusDiv = document.getElementById('uploadStatus');
+
+    // Prevent default form submission & show progress/errors
+    uploadForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      if (!fileInput.files[0]) {
+        statusDiv.textContent = "Please select a file.";
+        return;
+      }
+      statusDiv.textContent = "Uploading...";
+      try {
+        const result = await uploadFile(fileInput.files[0]);
+        statusDiv.innerHTML =
+          `✅ Success!<br>Share: <a href="https://rootz.so/d/${result.shortId}" target="_blank">https://rootz.so/d/${result.shortId}</a>`;
+      } catch (err) {
+        statusDiv.textContent = "❌ Upload failed: " + err.message;
+      }
+    });
+  </script>
 </body>
 </html>
