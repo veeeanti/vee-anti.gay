@@ -1,6 +1,6 @@
 // Unified upload function that handles any file size
 const API_KEY = 'rtz_619db4e782c92fef237f0ba2734bc4f237fe9f61981000de1386671179f7b282'; // <-- Set your API key here
-const BASE_URL = 'https://rootz.so';
+const BASE_URL = 'https://rootz.so/api';
 const MULTIPART_THRESHOLD = 10 * 1024 * 1024; // 10MB
 
 // Upload small files (< 10MB) directly
